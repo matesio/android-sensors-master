@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
 import com.androidplot.Plot;
 import com.androidplot.util.PlotStatistics;
 import com.androidplot.util.Redrawer;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     String[] arrayData;
     private XYPlot aprLevelsPlot = null;
     private XYPlot aprHistoryPlot = null;
-    private SimpleXYSeries [] accelerometer= new SimpleXYSeries[3];
     private SimpleXYSeries accelerometerSeriesx = null, accelerometerSeriesy = null, accelerometerSeriesz = null;
     private SimpleXYSeries gyroscopeSeriesx = null, gyroscopeSeriesy = null, gyroscopeSeriesz = null;
     private SimpleXYSeries magnetometerSeriesx = null, magnetometerSeriesy = null, magnetometerSeriesz = null;
@@ -49,16 +47,12 @@ public class MainActivity extends AppCompatActivity {
         accelerometerSeriesy.useImplicitXVals();
         accelerometerSeriesz= new SimpleXYSeries("");
         accelerometerSeriesx.useImplicitXVals();
-
         gyroscopeSeriesx = new SimpleXYSeries("gyro");
         gyroscopeSeriesx.useImplicitXVals();
         gyroscopeSeriesy = new SimpleXYSeries("gyro");
-
         gyroscopeSeriesy.useImplicitXVals();
         gyroscopeSeriesz = new SimpleXYSeries("gyro");
-
         gyroscopeSeriesz.useImplicitXVals();
-
         magnetometerSeriesx = new SimpleXYSeries("");
         magnetometerSeriesx.useImplicitXVals();
         magnetometerSeriesy = new SimpleXYSeries("");
@@ -101,18 +95,14 @@ public class MainActivity extends AppCompatActivity {
         aprHistoryPlot.getDomainTitle().pack();
         aprHistoryPlot.setRangeLabel("");
         aprHistoryPlot.getRangeTitle().pack();
-
         aprHistoryPlot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.LEFT).
                 setFormat(new DecimalFormat("#"));
-
         aprHistoryPlot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).
                 setFormat(new DecimalFormat("#"));
 
         final PlotStatistics histStats = new PlotStatistics(5, false);
         aprHistoryPlot.addListener(histStats);
         histStats.setAnnotatePlotEnabled(true);
-        // use our custom domain value formatter:
-        //  aprLevelsPlot.setDomainValueFormat(new APRIndexFormat());
         redrawer = new Redrawer(
                 Arrays.asList(new Plot[]{aprHistoryPlot}),
                 100, false);
@@ -171,55 +161,55 @@ public class MainActivity extends AppCompatActivity {
                     magnetometerSeriesz.removeFirst();
                 }
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 accelerometerSeriesx.addLast(timeStamp, x/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 accelerometerSeriesy.addLast(timeStamp, y/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 accelerometerSeriesz.addLast(timeStamp, z/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 gyroscopeSeriesx.addLast(timeStamp, xG/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 gyroscopeSeriesy.addLast(timeStamp, yG/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 gyroscopeSeriesz.addLast(timeStamp, zG/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 magnetometerSeriesx.addLast(timeStamp, xM/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 magnetometerSeriesy.addLast(timeStamp, yM/20);
                 try {
-                    sleep(200);
+                    sleep(150);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -227,7 +217,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }).start();
-
     }
     @Override
     protected void onStop() {
@@ -259,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                     generateit(x, y, z, xG, yG, zG, xM, yM, zM, timeStamp);
                 }
             }).start();
-
 
         }
     }

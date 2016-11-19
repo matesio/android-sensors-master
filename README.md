@@ -1,4 +1,5 @@
 # android-sensors-master
+v 1.0
 Dependencies in gradle:
 >>> compile 'net.sf.opencsv:opencsv:2.3'
 >>> compile 'com.androidplot:androidplot-core:1.2.2'
@@ -9,4 +10,14 @@ Features:
 
 Issues:
 >>> low frame rate and lag in broadcastreceiver
+
 Ps:-Principle Component analysis in  progress
+
+v 1.0.1
+
+Fixes:
+>>>better fps rate 
+>>>improved broadcastreceiver
+
+What's new:
+>>> Pinch zooom

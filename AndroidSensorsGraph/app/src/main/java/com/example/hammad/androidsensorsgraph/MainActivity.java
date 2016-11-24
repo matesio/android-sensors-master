@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
     MyReceiver myReceiver;
     private XYPlot aprHistoryPlot = null;
     private SimpleXYSeries[] series;
-    private SimpleXYSeries accelerometerSeriesx = null, accelerometerSeriesy = null, accelerometerSeriesz = null;
-    private SimpleXYSeries gyroscopeSeriesx = null, gyroscopeSeriesy = null, gyroscopeSeriesz = null;
-    private SimpleXYSeries magnetometerSeriesx = null, magnetometerSeriesy = null, magnetometerSeriesz = null;
     private Redrawer redrawer;
     private PanZoom panZoom;
 

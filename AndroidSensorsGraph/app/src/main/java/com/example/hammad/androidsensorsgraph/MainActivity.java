@@ -166,15 +166,6 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context arg0, final Intent arg1) {
             // TODO Auto-generated method stub
             float data[] = arg1.getFloatArrayExtra("DATAPASSED");
-            float[] arr = new float[9];
-            arr[0] = data[0];
-            arr[1] = data[1];
-            arr[3] = data[3];
-            arr[4] = data[4];
-            arr[5] = data[5];
-            arr[6] = data[6];
-            arr[7] = data[7];
-            arr[8] = data[8];
             long time = System.currentTimeMillis();
             final float timeStamp = (float) ((Float.parseFloat(String.valueOf(time))) / 1000.0);
             generateit(data[0],data[1], data[2], data[3], data[4], data[5],data[6], data[7], data[8], timeStamp);

@@ -22,7 +22,7 @@ import com.androidplot.xy.XYPlot;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
-    private static final int HISTORY_SIZE = 100;
+    private static final int HISTORY_SIZE = 1000;
     MyReceiver myReceiver;
     private XYPlot aprHistoryPlot = null;
     private SimpleXYSeries[] series;
@@ -107,19 +107,15 @@ public class MainActivity extends AppCompatActivity {
         panZoom = PanZoom.attach(aprHistoryPlot);
 
     }
-
-
     public void onResume() {
         super.onResume();
         redrawer.start();
     }
-
     @Override
     public void onPause() {
         redrawer.pause();
         super.onPause();
     }
-
     @Override
     public void onDestroy() {
         redrawer.finish();
@@ -128,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
                 myReceiver = new MyReceiver();
                 IntentFilter intentFilter = new IntentFilter();
                 intentFilter.addAction(com.example.hammad.androidsensorsgraph.MyService.MY_ACTION);
@@ -138,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, com.example.hammad.androidsensorsgraph.MyService.class);
                 startService(intent);
             }
-        }).start();
-    }
 
     public void generateit(final float x, final float y, final float z, final float xG, final float yG, final float zG, final float xM, final float yM, final float zM, final float timeStamp) {
 
@@ -154,43 +145,26 @@ public class MainActivity extends AppCompatActivity {
                     series[7].removeFirst();
                     series[8].removeFirst();
                 }
-
-
-
-
                 series[0].addLast(timeStamp, x);
-
                 series[1].addLast(timeStamp, y);
-
                 series[2].addLast(timeStamp, z);
-
                 series[3].addLast(timeStamp, xG);
-
                 series[4].addLast(timeStamp, yG);
-
                 series[5].addLast(timeStamp, zG);
-
                 series[6].addLast(timeStamp, xM);
-
                 series[7].addLast(timeStamp, yM);
-
                 series[8].addLast(timeStamp, zM);
             }
-
-
     @Override
     protected void onStop() {
         // TODO Auto-generated method stub
         unregisterReceiver(myReceiver);
         super.onStop();
     }
-
     private class MyReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context arg0, final Intent arg1) {
             // TODO Auto-generated method stub
-
-
             float data[] = arg1.getFloatArrayExtra("DATAPASSED");
             float[] arr = new float[9];
             arr[0] = data[0];
@@ -203,9 +177,7 @@ public class MainActivity extends AppCompatActivity {
             arr[8] = data[8];
             long time = System.currentTimeMillis();
             final float timeStamp = (float) ((Float.parseFloat(String.valueOf(time))) / 1000.0);
-            generateit(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], timeStamp);
-
-
+            generateit(data[0],data[1], data[2], data[3], data[4], data[5],data[6], data[7], data[8], timeStamp);
         }
     }
 }

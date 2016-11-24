@@ -18,6 +18,6 @@ v 1.0.1
 Fixes:
 >>>better fps rate 
 >>>improved broadcastreceiver
-
+>>>improved refresh rate 
 What's new:
 >>> Pinch zooom

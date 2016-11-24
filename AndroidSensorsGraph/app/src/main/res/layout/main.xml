@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="1">
     <com.androidplot.xy.XYPlot
-        style="@style/AlertDialog.AppCompat"
+        style="@style/AppTheme"
         android:id="@+id/aprHistoryPlot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +14,6 @@
         ap:rangeTitle="Time"
         ap:domainTitle="Sensors Data"
         ap:lineLabels="left|bottom"
-        ap:lineLabelRotationBottom="-45" />
-        android:text="Reset"/>
-
+         />
+        />
 </LinearLayout>

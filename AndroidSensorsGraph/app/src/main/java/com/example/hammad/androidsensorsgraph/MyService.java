@@ -40,6 +40,7 @@ public class MyService extends Service implements SensorEventListener {
             }
 
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
@@ -65,23 +66,24 @@ public class MyService extends Service implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
-
     @Override
     public void onSensorChanged(final SensorEvent event) {
                 Sensor oSensor = event.sensor;
-                if (oSensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                    array[0] = event.values[0];
-                    array[1]= event.values[1];
-                    array[2] = event.values[2];
-                } else if (oSensor.getType() == Sensor.TYPE_GYROSCOPE) {
-                    array[3]= event.values[0];
-                    array[4]= event.values[1];
-                    array[5]= event.values[2];
-                } else if (oSensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-                    array[6]= event.values[0];
-                    array[7]= event.values[1];
-                    array[8]= event.values[2];
-                }
+        synchronized (this ) {
+            if (oSensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                array[0] = event.values[0];
+                array[1] = event.values[1];
+                array[2] = event.values[2];
+            } else if (oSensor.getType() == Sensor.TYPE_GYROSCOPE) {
+                array[3] = event.values[0];
+                array[4] = event.values[1];
+                array[5] = event.values[2];
+            } else if (oSensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                array[6] = event.values[0];
+                array[7] = event.values[1];
+                array[8] = event.values[2];
+            }
+        }
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                 String currentDateandTime = sdf.format(new Date());
                 res = String.valueOf(currentDateandTime + "#" + array[0]) + "#" + String.valueOf( array[1]) + "#" + String.valueOf( array[2]) + "#"

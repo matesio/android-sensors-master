@@ -94,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
                 setFormat(new DecimalFormat("#"));
         aprHistoryPlot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).
                 setFormat(new DecimalFormat("#"));
-        final PlotStatistics histStats = new PlotStatistics(100, false);
+        final PlotStatistics histStats = new PlotStatistics(100, true);
         aprHistoryPlot.addListener(histStats);
         histStats.setAnnotatePlotEnabled(true);
 
         redrawer = new Redrawer(
                 Arrays.asList(new Plot[]{aprHistoryPlot}),
-                999, true);
+                100, true);
         //      redrawer.setMaxRefreshRate((float) 100);
         //.. redrawer.run();
         aprHistoryPlot.animate();
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void generateit(final float x, final float y, final float z, final float xG, final float yG, final float zG, final float xM, final float yM, final float zM, final float timeStamp) {
 
-                if (series[0].size() > HISTORY_SIZE) {
+                if ((series[0].size() > HISTORY_SIZE) || (series[3].size() > HISTORY_SIZE ) || series[6].size() > HISTORY_SIZE ) {
                     series[0].removeFirst();
                     series[1].removeFirst();
                     series[2].removeFirst();

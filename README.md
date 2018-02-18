@@ -11,7 +11,7 @@ v 1.0
 # Issues: 
  * low frame rate and lag in broadcastreceiver
 
-* v 1.0.1
+
 
 # Fixes:
 * better fps rate 

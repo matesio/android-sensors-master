@@ -11,11 +11,11 @@ v 1.0
 # Issues: 
  * low frame rate and lag in broadcastreceiver
 
-v 1.0.1
+* v 1.0.1
 
-Fixes:
->>>better fps rate 
->>>improved broadcastreceiver
->>>improved refresh rate 
-What's new:
+# Fixes:
+* better fps rate 
+* improved broadcastreceiver
+* improved refresh rate 
+# What's new:
 * Pinch zooom

@@ -18,4 +18,4 @@ Fixes:
 >>>improved broadcastreceiver
 >>>improved refresh rate 
 What's new:
->>> Pinch zooom
+* Pinch zooom
